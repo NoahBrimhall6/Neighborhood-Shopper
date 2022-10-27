@@ -9,12 +9,12 @@
 
     {{#each cards as |card|}}
     <div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xxl-3 mb-3">
-      <div class="card"><a href='product/{{card.id}}'>
+      <div class="card" data-id="{{card.id}}">
         <img src="{{card.img}}" class="card-img-top" alt="{{card.alt}}">
         <div class="card-body">
           <h5 class="card-title">{{card.title}}</h5>
           <p class="card-text">{{card.desc}}</p>
-        </div></a>
+        </div>
       </div>
     </div>
     {{/each}}
