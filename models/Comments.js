@@ -12,15 +12,27 @@ Comment.init({
         primaryKey: true,
         autoIncrement: true,
       },
-    commentor:{
-        type: DataTypes.STRING,
-        allowNull: false,        
-    },
     comment:{
         type: DataTypes.STRING,
         allowNull: false,        
-    },   
-},
+    },
+    user_id:{
+      type: DataTypes.Integer,
+      allowNull: false,
+      references: {
+          model:'user',
+          key: 'id',
+      },
+    },
+    product_id:{
+      type: DataTypes.Integer,
+      allowNull: false,
+      references: {
+          model:'product',
+          key: 'id',
+      },
+    },     
+  },
 {
     sequelize,
     timestamps: false,

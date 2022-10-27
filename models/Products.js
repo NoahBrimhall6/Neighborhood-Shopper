@@ -20,9 +20,33 @@ Product.init({
         type: DataTypes.STRING,
         allowNull: false,        
     },
+    price:{
+        type: DataTypes.Integer,
+        allowNull: false,        
+    },
+    main_image:{
+        type: DataTypes.STRING,
+        allowNull: false,        
+    },
+    second_image:{
+        type: DataTypes.STRING,
+        allowNull: false,        
+    },
+    third_image:{
+        type: DataTypes.STRING,
+        allowNull: false,        
+    },
     zip_code:{
         type: DataTypes.Integer,
         allowNull: false,        
+    },
+    user_id:{
+        type: DataTypes.Integer,
+        allowNull: false,
+        references: {
+            model:'user',
+            key: 'id',
+        },       
     },    
 },
 {
