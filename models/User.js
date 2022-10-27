@@ -17,10 +17,6 @@ class User extends Model {
         primaryKey: true,
         autoIncrement: true,
       },
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -34,22 +30,16 @@ class User extends Model {
         allowNull: false,
         unique: false,
       },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
           len: [8],
         },
-      },
-      products_posted: {
-        type: int,
-        allowNull: true,
-        unique: false,
-      },
-      comments_posted: {
-        type: int,
-        allowNull: true,
-        unique: false,
       },
     },
     {
