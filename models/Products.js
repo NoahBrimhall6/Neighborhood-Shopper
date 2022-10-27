@@ -5,7 +5,8 @@ class Product extends Model {}
 
 
 
-Product.init({
+Product.init(
+    {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,

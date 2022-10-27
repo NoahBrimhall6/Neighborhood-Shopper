@@ -44,7 +44,12 @@ class User extends Model {
       products_posted: {
         type: int,
         allowNull: true,
-        unique: false,
+        references: {
+          model: 'product',
+          key: 'id',
+        }
+        
+        
       },
       comments_posted: {
         type: int,
