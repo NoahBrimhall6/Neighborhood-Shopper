@@ -21,21 +21,13 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active home" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
+                <a class="nav-link login" href="#">Login</a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  More
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Settings</a></li>
-                  <li><a class="dropdown-item" href="#">Post Listing</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Logout</a></li>
-                </ul>
+              <li class="nav-item">
+                <a class="nav-link post" href="#">Post Listing</a>
               </li>
             </ul>
             <form class="d-flex search" role="search">
@@ -50,10 +42,18 @@
     <main>
 
       <div class="container">
+        <div class="row justify-content-center my-5">
+          <div class="col-11 col-sm-10 col-md-8 col-lg-6">
+            <form class="d-flex mainSearch">
+              <input type="text" id="searchZip" class="form-control form-control-lg me-2" placeholder="Search Zipcode">
+              <button type="button" class="btn btn-success">Search</button>
+            </form>
+          </div>
+        </div>
+
         <div class="row justify-content-evenly">
-      
           <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
-            <div class="card">
+            <div class="card" data-id="1">
               <img src="./img/bike.jpg" class="card-img-top" alt="a bike">
               <div class="card-body">
                 <h5 class="card-title">A bike</h5>
@@ -64,7 +64,7 @@
           </div>
 
           <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
-            <div class="card">
+            <div class="card" data-id="2">
               <img src="./img/bike.jpg" class="card-img-top" alt="a bike">
               <div class="card-body">
                 <h5 class="card-title">A Different bike</h5>
@@ -73,9 +73,10 @@
               </div>
             </div>
           </div>
-      
         </div>
       </div>
+
+      <script src="./scripts/homepage.js"></script>
 
     </main>
 
@@ -83,7 +84,8 @@
 
     </footer>
 
-	  <script src="./scripts/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+	  <script src="./scripts/index.js"></script>
+    
   </body>
 </html>

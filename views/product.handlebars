@@ -11,21 +11,21 @@
         <div class="row">
           <div class="col">
             <div class="card">
-              <img src="./img/bike.jpg" class="card-img"> 
+              <img src="{{item.img1}}" class="card-img"> 
             </div>
           </div>
         </div>
   
-        <div class="row">
+        <div class="row mb-3">
           <div class="col-6">
             <div class="card">
-              <img src="./img/bike.jpg" class="card-img"> 
+              <img src="{{item.img2}}" class="card-img"> 
             </div>
           </div>
   
           <div class="col-6">
             <div class="card">
-              <img src="./img/bike.jpg" class="card-img"> 
+              <img src="{{item.img3}}" class="card-img"> 
             </div>
           </div>
         </div>
@@ -40,10 +40,13 @@
   </div>
 
   <div class="row">
-    <div class="col border border-primary rounded">
+    <div class="col">
       <div>
-        <h2>Comments: </h2>
+        <label for="addComment" class="form-label">Add Comment</label>
+        <textarea class="form-control" id="addComment" rows="1"></textarea>
+        <button class="btn btn-primary mt-3" id="commentSubmit" type="submit">Post Comment</button>
       </div>
-    </div> 
+    </div>
   </div>
 </div>
+<script src="/scripts/product.js"></script>
