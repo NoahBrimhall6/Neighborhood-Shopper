@@ -9,7 +9,18 @@
     <div class="col-12 col-sm-6">
       <h4>Upload an Image</h2>
       <div class="border border-secondary rounded h-75">
-
+        <div class = "fileUpload">
+        <label for="file1">Please upload your main display photo (Required)</label>
+        <input type="file" id="file1">
+        </div>
+        <div class = "fileUpload">
+        <label for="file2">Please upload your second display photo (Optional)</label>
+        <input type="file" id="file2">
+        </div>
+        <div class = "fileUpload">
+        <label for="file3">Please upload your third display photo (Optional)</label>
+        <input type="file" id="file3">
+        </div>
       </div>
     </div>
 
@@ -30,6 +41,6 @@
         <label for="productDesc" class="form-label">Description</label>
         <textarea class="form-control" id="productDesc" rows="6"></textarea>
       </div>
-      <button type="button" class="btn btn-success">Post Listing</button>
+      <button type="button" class="btn btn-success" id="post">Post Listing</button>
     </div>
   </div>
