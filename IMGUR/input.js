@@ -4,6 +4,7 @@ const url = document.getElementById("url")
 file.addEventListener("change", ev => {
     const formdata = new FormData()
     formdata.append("image", ev.target.files[0])
+    console.log(ev.target)
     fetch("https://api.imgur.com/3/image", {
         method: "POST",
         headers: {

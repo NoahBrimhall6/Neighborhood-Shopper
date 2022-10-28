@@ -17,7 +17,7 @@ Comment.init({
         allowNull: false,        
     },
     user_id:{
-      type: DataTypes.Integer,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
           model:'user',
@@ -25,7 +25,7 @@ Comment.init({
       },
     },
     product_id:{
-      type: DataTypes.Integer,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
           model:'product',
