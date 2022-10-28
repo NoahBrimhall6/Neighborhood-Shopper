@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Products } = require('../../models');
 
 router.post('/create', async (req, res) => {
+    
     try {
         const dbPostData = await Products.create({
             title: req.body.title,
