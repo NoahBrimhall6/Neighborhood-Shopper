@@ -38,10 +38,9 @@ router.get('/product/:id', async (req, res) => {
 router.get('/search/:zip', async (req, res) => {
   try {
     const searchData = await Products.findAll({where:{zip_code:req.params.zip}});
+    const cards = searchData.get({ plain: true });
 
-    const search = searchData.get({ plain: true });
-
-    res.render('search', { search, loggedIn: req.session.loggedIn });
+    res.render('search', { cards, loggedIn: req.session.loggedIn, zip: req.params.zip });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
