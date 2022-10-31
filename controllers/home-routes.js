@@ -7,14 +7,25 @@ const withAuth = require('../utils/auth');
 // render the homepage
 router.get('/', async (req, res) => {
   try {
-    res.render('homepage', {
-      loggedIn: req.session.loggedIn,
+    const cardData = await Products.findAll().catch((err) => { 
+      res.json(err);
     });
+  
+    const cards = cardData.map((card) => card.get({ plain: true }));
+    console.log(cardData);
+    res.render('homepage', { cards });
+
+    // res.render('homepage', {
+    //   loggedIn: req.session.loggedIn,
+    // });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
+
+
+
 
 // GET one product and render a page for it.
 router.get('/product/:id', async (req, res) => {
