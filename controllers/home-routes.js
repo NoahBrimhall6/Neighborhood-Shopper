@@ -13,18 +13,12 @@ router.get('/', async (req, res) => {
   
     const cards = cardData.map((card) => card.get({ plain: true }));
     console.log(cardData);
-    res.render('homepage', { cards });
-
-    // res.render('homepage', {
-    //   loggedIn: req.session.loggedIn,
-    // });
+    res.render('homepage', { cards, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
-
-
 
 
 // GET one product and render a page for it.

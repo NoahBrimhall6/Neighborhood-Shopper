@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mb-3">
     <div class="col border-bottom border-secondary">
-      <h2>Product Title</h2>
+      <h2>{{product.title}}</h2>
     </div> 
   </div>
 
@@ -11,7 +11,7 @@
         <div class="row">
           <div class="col">
             <div class="card">
-              <img src="{{item.img1}}" class="card-img"> 
+              <img src="{{product.main_image}}" class="card-img"> 
             </div>
           </div>
         </div>
@@ -19,13 +19,13 @@
         <div class="row mb-3">
           <div class="col-6">
             <div class="card">
-              <img src="{{item.img2}}" class="card-img"> 
+              <img src="{{product.second_image}}" class="card-img"> 
             </div>
           </div>
   
           <div class="col-6">
             <div class="card">
-              <img src="{{item.img3}}" class="card-img"> 
+              <img src="{{product.third_image}}" class="card-img"> 
             </div>
           </div>
         </div>
@@ -34,7 +34,9 @@
 
     <aside class="col-12 col-md-4 border-start border-secondary">
       <div>
+        <h3>{{product.price}}</h3>
         <h2>Product Description: </h2>
+        <p>{{product.description}}</p>
       </div>
     </aside>
   </div>
