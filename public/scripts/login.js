@@ -66,7 +66,7 @@ $('#signUpSubmit').click(async event => {
 
   const response = await fetch('/api/users', {
     method: 'POST',
-    body: JSON.stringify({ userName, userEmail, userPhone, userPassword }),
+    body: JSON.stringify({ username, userEmail, userPhone, userPassword }),
     headers: { 'Content-Type': 'application/json' }
   });
 

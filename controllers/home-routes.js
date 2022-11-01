@@ -49,13 +49,13 @@ router.get('/login', (req, res) => {
     return;
   }
 
-  res.render('login');
+  res.render('login', { loggedIn: req.session.loggedIn });
 });
 
 //if the user is logged in render the post page. If not then redirect them to the log in page.
 router.get('/post', withAuth, (req, res) => {
     if (req.session.loggedIn) {
-    res.render('post');
+    res.render('post', { loggedIn: req.session.loggedIn });
       return;
     }
     res.redirect('/login');
