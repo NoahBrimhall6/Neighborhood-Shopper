@@ -26,7 +26,7 @@ $('#loginSubmit').click(async event => {
   }
 });
 
-$('#signUpSubmit').click(event => {
+$('#signUpSubmit').click(async event => {
   event.preventDefault();
 
   var username = $('#userName').val().trim();
@@ -64,5 +64,16 @@ $('#signUpSubmit').click(event => {
     return;
   }
 
+  const response = await fetch('/api/users', {
+    method: 'POST',
+    body: JSON.stringify({ userName, userEmail, userPhone, userPassword }),
+    headers: { 'Content-Type': 'application/json' }
+  });
+
+  if (response.ok) {
+    location.replace('/');
+  } else {
+    alert('Failed to sign up.');
+  }
 });
 
