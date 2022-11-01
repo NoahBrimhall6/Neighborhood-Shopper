@@ -33,6 +33,7 @@ router.get('/product/:id', async (req, res) => {
 //GET all products with a matching zip code and render them on page.
 router.get('/search/:zip', async (req, res) => {
   try {
+    
     const cardData = await Products.findAll({where:{zip_code:req.params.zip}}).catch((err) => res.json(err));
     const cards = cardData.map((card) => card.get({ plain: true }));
     res.render('search', { cards, loggedIn: req.session.loggedIn, zip: req.params.zip });

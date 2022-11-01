@@ -4,7 +4,7 @@ $(".search").click(function (event) {
     if (element.matches("button")) {
         var userInput = $(this).children("input").val();
         console.log(userInput);
-        location.replace(`search/${userInput}`);    
+        location.replace(`/search/${userInput}`);    
     }
 });
 
