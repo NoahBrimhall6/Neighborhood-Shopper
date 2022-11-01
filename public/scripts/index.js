@@ -15,7 +15,18 @@ $(".login").click(event => location.replace("/login"));
 
 $(".post").click(event => location.replace("/post"));
 
+$(".logout").click(async event => {
+    const response = await fetch('/api/users/logout', {
+        method: 'POST',
+        header: { 'Content-Type': 'application/json' },
+    });
 
+    if (response.ok) {
+        location.replace('/');
+    } else {
+        alert('Failed to log out.');
+    }
+});
 
 
 

@@ -1,22 +1,32 @@
-$('#loginSubmit').click(event => {
+$('#loginSubmit').click(async event => {
   event.preventDefault();
 
-  var loginEmail = $('#loginEmail').val().trim();
+  const loginEmail = $('#loginEmail').val().trim();
   if (!loginEmail) {
     $('.alert').text('Please enter an email address').css('display', 'flex');
     return;
   }
 
-  var loginPassword = $('#loginPassword').val().trim();
+  const loginPassword = $('#loginPassword').val().trim();
   if (!loginPassword) {
     $('.alert').text('Please enter a password').css('display', 'flex');  
     return;
   }
 
+  const response = await fetch('api/users/login', {
+    method: 'POST',
+    body: JSON.stringify({ loginEmail, loginPassword }),
+    headers: { 'Content-Type': 'application/json' }
+  });
 
+  if (response.ok) {
+    location.replace('/');
+  } else {
+    alert('Failed to log in.');
+  }
 });
 
-$('#signUpSubmit').click(event => {
+$('#signUpSubmit').click(async event => {
   event.preventDefault();
 
   var username = $('#userName').val().trim();
@@ -54,5 +64,16 @@ $('#signUpSubmit').click(event => {
     return;
   }
 
+  const response = await fetch('/api/users', {
+    method: 'POST',
+    body: JSON.stringify({ username, userEmail, userPhone, userPassword }),
+    headers: { 'Content-Type': 'application/json' }
+  });
+
+  if (response.ok) {
+    location.replace('/');
+  } else {
+    alert('Failed to sign up.');
+  }
 });
 
