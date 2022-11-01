@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Products} = require('../models');
+const { Products, Comments, User } = require('../models');
 // Import the custom middleware
 const withAuth = require('../utils/auth');
 
@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
   try {
     const cardData = await Products.findAll().catch((err) => res.json(err));
     const cards = cardData.map((card) => card.get({ plain: true }));
-    console.log(cardData);
+    console.log(cards);
     res.render('homepage', { cards, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
@@ -21,9 +21,24 @@ router.get('/', async (req, res) => {
 // GET one product and render a page for it.
 router.get('/product/:id', async (req, res) => {
   try {
+    // Get products from the database
     const productData = await Products.findByPk(req.params.id).catch((err) => res.json(err));
     const product = productData.get({ plain: true });
-    res.render('product', { product, loggedIn: req.session.loggedIn });
+
+    // Get comments from the database
+    const commentData = await Comments.findAll({ where: { product_id: req.params.id } }).catch(err => res.json(err));
+    const comments = commentData.map(comment => comment.get({ plain: true }));
+
+    // Finds the user that made the comment
+    for (let i = 0; i < comments.length; i++) {
+      const userData = await User.findByPk(comments[i].user_id).catch(err => res.json(err));
+      const user = userData.get({ plain: true });
+      comments[i].username = user.name;
+    }
+
+    console.log(comments);
+
+    res.render('product', { product, comments, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

@@ -43,12 +43,23 @@
 
   <div class="row">
     <div class="col">
-      <div>
-        <label for="addComment" class="form-label">Add Comment</label>
-        <textarea class="form-control" id="addComment" rows="1"></textarea>
-        <button class="btn btn-primary mt-3" id="commentSubmit" type="submit">Post Comment</button>
-      </div>
+      <textarea class="form-control" id="addComment" rows="1" placeholder="Add comment..."></textarea>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary" id="commentSubmit" type="submit">Post</button>
     </div>
   </div>
+
+  {{#each comments as |comment|}}
+  <div class="row border-bottom border-secondary">
+    <div class="col-3">
+      <h3>{{comment.username}}</h3>
+    </div>
+    <div class="col-9">
+      <p>{{comment.comment}}</p>
+    </div>
+  </div>
+  {{/each}}
+
 </div>
 <script src="/scripts/product.js"></script>

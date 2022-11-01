@@ -1,6 +1,6 @@
 const User = require('./User');
-const Comments =require('./Comments')
-const Products =require('./Products')
+const Comments = require('./Comments');
+const Products = require('./Products');
 
 
 User.hasMany(Comments, {
