@@ -11,28 +11,28 @@ const commentdata = [
   {
     comment: 'Nice Product',
     user_id: '2',
-    product_id: '36',
+    product_id: '6',
     
   },
 
   {
     comment: 'still available?',
     user_id: '3',
-    product_id: '35',
+    product_id: '5',
     
   },
   
   {
     comment: 'Dont buy this',
     user_id: '4',
-    product_id: '34',
+    product_id: '4',
     
   },
   
   {
     comment: 'Waste of money',
     user_id: '5',
-    product_id: '33',
+    product_id: '3',
     
   },
   
@@ -206,7 +206,7 @@ const commentdata = [
   {
     comment: 'This is nice',
     user_id: '2',
-    product_id: '37',
+    product_id: '7',
     
   },
 

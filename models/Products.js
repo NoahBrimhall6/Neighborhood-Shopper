@@ -14,31 +14,31 @@ Product.init({
       },
     title:{
         type: DataTypes.STRING,
-        allowNull: false,        
+        allowNull: true,        
     },
     description:{
         type: DataTypes.STRING,
-        allowNull: false,        
+        allowNull: true,        
     },
     price:{
         type: DataTypes.INTEGER,
-        allowNull: false,        
+        allowNull: true,        
     },
     main_image:{
         type: DataTypes.STRING,
-        allowNull: false,        
+        allowNull: true,        
     },
     second_image:{
         type: DataTypes.STRING,
-        allowNull: false,        
+        allowNull: true,        
     },
     third_image:{
         type: DataTypes.STRING,
-        allowNull: false,        
+        allowNull: true,        
     },
     zip_code:{
         type: DataTypes.INTEGER,
-        allowNull: false,        
+        allowNull: true,        
     },
     user_id:{
         type: DataTypes.INTEGER,
