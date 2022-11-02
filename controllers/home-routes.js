@@ -37,8 +37,9 @@ router.get('/product/:id', async (req, res) => {
     }
 
     console.log(comments);
+    console.log(req.session.userId);
 
-    res.render('product', { product, comments, loggedIn: req.session.loggedIn });
+    res.render('product', { product, comments, loggedIn: req.session.loggedIn, userId: req.session.userId });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

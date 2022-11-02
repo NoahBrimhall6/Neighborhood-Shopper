@@ -46,14 +46,14 @@
       <textarea class="form-control" id="addComment" rows="1" placeholder="Add comment..."></textarea>
     </div>
     <div class="col">
-      <button class="btn btn-primary" id="commentSubmit" type="submit">Post</button>
+      <button class="btn btn-primary" id="commentSubmit" data-product="{{product.id}}" data-userId="{{userId}}" type="submit">Post</button>
     </div>
   </div>
 
   {{#each comments as |comment|}}
   <div class="row border-bottom border-secondary">
-    <div class="col-3">
-      <h3>{{comment.username}}</h3>
+    <div class="col-3"> 
+      <h5>{{comment.username}}</h3>
     </div>
     <div class="col-9">
       <p>{{comment.comment}}</p>
