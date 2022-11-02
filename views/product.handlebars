@@ -34,14 +34,13 @@
 
     <aside class="col-12 col-md-4 border-start border-secondary">
       <div>
-        <h3>{{product.price}}</h3>
-        <h2>Product Description: </h2>
+        <h3>${{product.price}}</h3>
         <p>{{product.description}}</p>
       </div>
     </aside>
   </div>
 
-  <div class="row">
+  <div class="row mb-3">
     <div class="col">
       <textarea class="form-control" id="addComment" rows="1" placeholder="Add comment..."></textarea>
     </div>
@@ -51,11 +50,11 @@
   </div>
 
   {{#each comments as |comment|}}
-  <div class="row border-bottom border-secondary">
-    <div class="col-3"> 
+  <div class="row mb-3 border-bottom border-secondary border-opacity-50">
+    <div class="col-2"> 
       <h5>{{comment.username}}</h3>
     </div>
-    <div class="col-9">
+    <div class="col-10">
       <p>{{comment.comment}}</p>
     </div>
   </div>
