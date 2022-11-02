@@ -5,21 +5,21 @@ router.post('/create', async (req, res) => {
     
     try {
         const dbPostData = await Products.create({
-            title: req.body.title,
-            description: req.body.description,
-            zip_code: req.body.zip_code,
-            price: req.body.price,
+            title: req.body.productName,
+            description: req.body.productDesc,
+            price: req.body.productPrice,
+            zip_code: req.body.productZipcode,
             main_image: req.body.main_image,
             second_image: req.body.second_image,
             third_image: req.body.third_image,
-            user_id: req.body.user_id
+            user_id: req.session.userId
         });
-        res.status(200).json(dbPostData)
+        res.status(200).json(dbPostData);
     } catch (err){
         console.log(err);
         res.status(500).json(err);
     }
-})
+});
 
 router.put('/destroy/:id', async (req, res) => {
     try {
@@ -28,7 +28,7 @@ router.put('/destroy/:id', async (req, res) => {
         console.log(err);
         res.status(500).json(err);
     }
-})
+});
 
 
 module.exports = router;

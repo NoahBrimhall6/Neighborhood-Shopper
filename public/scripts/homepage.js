@@ -4,7 +4,7 @@ $(".main-search").click(function (event) {
   if (element.matches("button")) {
     var userInput = $(this).children("input").val();
     console.log(userInput);
-    location.replace(`search/${userInput}`);    
+    location.replace(`/search/${userInput}`);    
   }
 });
 
@@ -13,5 +13,5 @@ $(".main-search").click(function (event) {
 $('.cardBtn').click(event => {
   var element = event.target;
   var id = element.dataset.id;
-  location.replace(`product/${id}`);
+  location.replace(`/product/${id}`);
 });

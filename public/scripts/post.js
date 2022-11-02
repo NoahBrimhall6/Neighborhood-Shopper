@@ -1,83 +1,56 @@
 $("#post").click( async () => {
-    let file1 = $("#file1");
-    var file2 = $("#file2");
-    var file3 = $("#file3");
-    var title = $("#productName").val();
-    var zip_code = $("#productZipcode").val();
-    var price = $("#productPrice").val();
-    var description = $("#productDesc").val();
 
-    var user_id = "1"
+    // Verifys input not null
+    const productName = $("#productName").val().trim();
+    if (!productName) {
+        $('.alert').text('Please enter a name.').css('display', 'flex');
+        return;
+    }
+
+    const productZipcode = $("#productZipcode").val().trim();
+    if (!productZipcode) {
+        $('.alert').text('Please enter a zipcode.').css('display', 'flex');
+        return;
+    }
     
-    var file1Data = file1[0].files[0]
-    var file2Data = file2[0].files[0]
-    var file3Data = file3[0].files[0]
+    const productPrice = $("#productPrice").val().trim();
+    if (!productPrice) {
+        $('.alert').text('Please enter a price.').css('display', 'flex');
+        return;
+    }
 
+    const productDesc = $("#productDesc").val().trim();
+    if (!productDesc) {
+        $('.alert').text('Please enter a description.').css('display', 'flex');
+        return;
+    }
+
+    // Image upload
+    const file1 = $("#file1");
+    const file2 = $("#file2");
+    const file3 = $("#file3");
+    
+    const file1Data = file1[0].files[0];
+    const file2Data = file2[0].files[0];
+    const file3Data = file3[0].files[0];
+    
     var main_image = "https://i.imgur.com/AEsHv43.jpg"
     var second_image = "https://i.imgur.com/s49h80v.jpg"
     var third_image = "https://i.imgur.com/DJn6vmJ.jpg"
 
+    const bodyData = JSON.stringify({ productName, productZipcode, productPrice, productDesc, main_image, second_image, third_image });
+    console.log(bodyData);
 
-    // if (file1Data) {
-    // var formdata = new FormData()
-    // formdata.append("image", file1Data)
-    // await fetch("https://api.imgur.com/3/image", {
-    //     method: "POST",
-    //     headers: {
-    //         Authorization: "Client-ID 4b896900311885a" 
-    //     },
-    //     body:formdata
-    // }).then(data => data.json()).then(data=>{
-    //     file1Url = data.data.link
-    // })
-    // }
-    // if (file2Data) {
-    //     var formdata2 = new FormData()
-    //     formdata2.append("image", file2Data)
-    //     await fetch("https://api.imgur.com/3/image", {
-    //         method: "POST",
-    //         headers: {
-    //             Authorization: "Client-ID 4b896900311885a" 
-    //         },
-    //         body:formdata2
-    //     }).then(data => data.json()).then(data=>{
-    //         console.log(data.data.link)
-    //         file2Url = data.data.link
-    //     })
-    // }
-    // if (file3Data) {
-    //     var formdata3 = new FormData()
-    //     formdata3.append("image", file3Data)
-    //     await fetch("https://api.imgur.com/3/image", {
-    //         method: "POST",
-    //         headers: {
-    //             Authorization: "Client-ID 4b896900311885a" 
-    //         },
-    //         body:formdata3
-    //     }).then(data => data.json()).then(data=>{
-    //         file3Url = data.data.link
-    //     })
-    // }
-
-
-
-    console.log(JSON.stringify({ title, zip_code, price, user_id, description, main_image, second_image, third_image }))
     const response = await fetch("/api/post/create", {
         method:'POST',
-        body: JSON.stringify({ title, zip_code, price, user_id, description, main_image, second_image, third_image }),
+        body: bodyData,
         headers: { 'Content-Type': 'application/json' }
-    })
+    });
+
     if (response.ok) {
-        document.location.replace('/')
+        document.location.replace('/');
     }
     else {
-        alert('post failed')
-    }
-
-
-    // postQuery(productName, productZipcode, productPrice, productDesc, file1Url, file2Url, file3Url)
+        alert('post failed');
+    }     
 });
-
-    // const postQuery = (productName, productZipcode, productPrice, productDesc, file1Url, file2Url, file3Url) => {
-
-        // }
