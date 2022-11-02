@@ -7,7 +7,12 @@ router.post('/create', async (req, res) => {
         const dbPostData = await Products.create({
             title: req.body.title,
             description: req.body.description,
-            zip_code: req.body.zip
+            zip_code: req.body.zip_code,
+            price: req.body.price,
+            main_image: req.body.main_image,
+            second_image: req.body.second_image,
+            third_image: req.body.third_image,
+            user_id: req.body.user_id
         });
         res.status(200).json(dbPostData)
     } catch (err){
