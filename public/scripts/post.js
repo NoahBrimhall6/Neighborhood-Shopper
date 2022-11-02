@@ -1,73 +1,52 @@
 $("#post").click( async () => {
-    let file1 = $("#file1");
-    var file2 = $("#file2");
-    var file3 = $("#file3");
-    var productName = $("#productName").val();
-    var productZipcode = $("#productZipcode").val();
-    var productPrice = $("#productPrice").val();
-    var productDesc = $("#productDesc").val();
+
+    // Verifys input not null
+    const productName = $("#productName").val().trim();
+    if (!productName) {
+        $('.alert').text('Please enter a name.').css('display', 'flex');
+        return;
+    }
+
+    const productZipcode = $("#productZipcode").val().trim();
+    if (!productZipcode) {
+        $('.alert').text('Please enter a zipcode.').css('display', 'flex');
+        return;
+    }
     
-    var file1Data = file1[0].files[0]
-    var file2Data = file2[0].files[0]
-    var file3Data = file3[0].files[0]
-    console.log(JSON.stringify({ productName, productZipcode, productPrice, productDesc, file1Data, file2Data, file3Data }))
+    const productPrice = $("#productPrice").val().trim();
+    if (!productPrice) {
+        $('.alert').text('Please enter a price.').css('display', 'flex');
+        return;
+    }
+
+    const productDesc = $("#productDesc").val().trim();
+    if (!productDesc) {
+        $('.alert').text('Please enter a description.').css('display', 'flex');
+        return;
+    }
+
+    // Image upload
+    const file1 = $("#file1");
+    const file2 = $("#file2");
+    const file3 = $("#file3");
+    
+    const file1Data = file1[0].files[0];
+    const file2Data = file2[0].files[0];
+    const file3Data = file3[0].files[0];
+
+    const bodyData = JSON.stringify({ productName, productZipcode, productPrice, productDesc, file1Data, file2Data, file3Data });
+    console.log(bodyData);
+
     const response = await fetch("/api/post/create", {
         method:'POST',
-        body: JSON.stringify({ productName, productZipcode, productPrice, productDesc, file1Data, file2Data, file3Data }),
+        body: bodyData,
         headers: { 'Content-Type': 'application/json' }
-    })
+    });
+
     if (response.ok) {
-        document.location.replace('/')
+        document.location.replace('/');
     }
     else {
-        alert('post failed')
-    }
-
-
-    // if (file1Data) {
-    // var formdata = new FormData()
-    // formdata.append("image", file1Data)
-    // await fetch("https://api.imgur.com/3/image", {
-    //     method: "POST",
-    //     headers: {
-    //         Authorization: "Client-ID 4b896900311885a" 
-    //     },
-    //     body:formdata
-    // }).then(data => data.json()).then(data=>{
-    //     file1Url = data.data.link
-    // })
-    // }
-    // if (file2Data) {
-    //     var formdata2 = new FormData()
-    //     formdata2.append("image", file2Data)
-    //     await fetch("https://api.imgur.com/3/image", {
-    //         method: "POST",
-    //         headers: {
-    //             Authorization: "Client-ID 4b896900311885a" 
-    //         },
-    //         body:formdata2
-    //     }).then(data => data.json()).then(data=>{
-    //         console.log(data.data.link)
-    //         file2Url = data.data.link
-    //     })
-    // }
-    // if (file3Data) {
-    //     var formdata3 = new FormData()
-    //     formdata3.append("image", file3Data)
-    //     await fetch("https://api.imgur.com/3/image", {
-    //         method: "POST",
-    //         headers: {
-    //             Authorization: "Client-ID 4b896900311885a" 
-    //         },
-    //         body:formdata3
-    //     }).then(data => data.json()).then(data=>{
-    //         file3Url = data.data.link
-    //     })
-    // }
-
-    // postQuery(productName, productZipcode, productPrice, productDesc, file1Url, file2Url, file3Url)
+        alert('post failed');
+    }     
 });
-
-    // const postQuery = (productName, productZipcode, productPrice, productDesc, file1Url, file2Url, file3Url) => {
-
-        // }
