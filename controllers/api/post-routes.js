@@ -9,9 +9,9 @@ router.post('/create', async (req, res) => {
             description: req.body.productDesc,
             price: req.body.productPrice,
             zip_code: req.body.productZipcode,
-            main_image: req.body.file1Data,
-            second_image: req.body.file2Data,
-            third_image: req.body.file3Data,
+            main_image: req.body.main_image,
+            second_image: req.body.second_image,
+            third_image: req.body.third_image,
             user_id: req.session.userId
         });
         res.status(200).json(dbPostData);

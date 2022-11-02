@@ -33,8 +33,12 @@ $("#post").click( async () => {
     const file1Data = file1[0].files[0];
     const file2Data = file2[0].files[0];
     const file3Data = file3[0].files[0];
+    
+    var main_image = "https://i.imgur.com/AEsHv43.jpg"
+    var second_image = "https://i.imgur.com/s49h80v.jpg"
+    var third_image = "https://i.imgur.com/DJn6vmJ.jpg"
 
-    const bodyData = JSON.stringify({ productName, productZipcode, productPrice, productDesc, file1Data, file2Data, file3Data });
+    const bodyData = JSON.stringify({ productName, productZipcode, productPrice, productDesc, main_image, second_image, third_image });
     console.log(bodyData);
 
     const response = await fetch("/api/post/create", {
