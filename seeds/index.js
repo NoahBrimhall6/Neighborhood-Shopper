@@ -1,18 +1,23 @@
 const sequelize = require('../config/connection');
-const products = require('./products');
-const comments = require('./comments');
-const users = require('./users');
+
+const seedComments = require('./comments');
+const seedProducts = require('./products');
+const seedUsers = require('./users');
+
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
 
-  await products();
 
-  await comments();
+  await seedUsers();
 
-  await users();
+  await seedProducts();
+
+  await seedComments();
+
 
   process.exit(0);
 };
+
 
 seedAll();

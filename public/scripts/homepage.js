@@ -8,4 +8,10 @@ $(".main-search").click(function (event) {
   }
 });
 
-$(".card").click(event => location.replace(`product/${$(this).data(id)}`));
+
+
+$('.cardBtn').click(event => {
+  var element = event.target;
+  var id = element.dataset.id;
+  location.replace(`product/${id}`);
+});
